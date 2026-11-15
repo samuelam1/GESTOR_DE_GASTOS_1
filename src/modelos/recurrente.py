@@ -1,7 +1,7 @@
 import calendar 
 from datetime import date
 
-from src.validaciones import (validar_id,validar_texto, validar_monto) 
+from src.modelos.validaciones import (validar_id,validar_texto, validar_monto) 
 
 def validar_dia(dia):
     if isinstance(dia, bool) or not isinstance(dia, int) or not 1 <= dia <= 31:
@@ -75,6 +75,3 @@ class Recurrente:
             )
             
             
-R = Recurrente(1, 20000, "Electrodomestico", "Tablet en Alkomprar", 2,"pagar siempre los dos",True)
-
-        

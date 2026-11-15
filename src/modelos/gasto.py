@@ -1,4 +1,4 @@
-from src.validaciones import (
+from src.modelos.validaciones import (
     validar_fecha,
     validar_id,
     validar_monto,
@@ -12,7 +12,7 @@ class Gasto:
 
     def __init__(self,id,monto,fecha,categoria,descripcion, origen="diario", recurrente_id=None):
         self.id = validar_id(id)
-        self.monto = validar_monto
+        self.monto = validar_monto(monto)
         self.fecha = validar_fecha(fecha)
         self.categoria = validar_texto(categoria, "La categoría")
         self.descripcion = validar_texto(descripcion,"La descripción")
@@ -56,7 +56,7 @@ class Gasto:
         except KeyError as error:
             raise ValueError (f"falta el campo {error} en el gasto")
         
-    def _eq_(self,otro):
+    def __eq__(self,otro):
         return isinstance(otro, Gasto) and self.a_dict() == otro.a_dict()
     
     def __repr__(self):

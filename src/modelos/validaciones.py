@@ -9,17 +9,17 @@ def validar_texto(valor, nombre):
 
 def validar_fecha(fecha):
     
+    if isinstance(fecha, datetime):
+        return fecha.date()
+
     if isinstance(fecha, date):
         return fecha
     
-    if isinstance(fecha, datetime):
-        return fecha.date()
-    
     if isinstance(fecha, str):
         try:
-            return datetime.strptime(fecha, "%y-%m-%d").date()
+            return datetime.strptime(fecha, "%Y-%m-%d").date()
         except ValueError:
-         raise ("La fecha debe tener formato AAAA-MM-DD")
+            raise ValueError("La fecha debe tener formato AAAA-MM-DD")
             
     raise ValueError("La fecha debe ser un date o un texto AAAA-MM-DD")
       
@@ -42,7 +42,7 @@ def validar_monto(monto):
 
 
 def validar_id(valor, nombre="id"):
-    if isinstance (valor,str) or not isinstance(valor, int) or valor < 1:
+    if isinstance(valor, bool) or not isinstance(valor, int) or valor < 1:
         raise ValueError(f"{nombre} debe ser un entero positivo")
     return valor
 

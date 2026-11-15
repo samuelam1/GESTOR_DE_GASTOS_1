@@ -1,5 +1,5 @@
 import unicodedata
-from src.validaciones import validar_texto
+from src.modelos.validaciones import validar_texto
 
 CATEGORIAS_POR_DEFECTO = ("Comida","Transporte","Hogar","Ocio","Salud","Otros")
 CATEGORIA_OTROS = "Otros"
@@ -28,7 +28,7 @@ class Categoria:
     def a_texto(self):
         return self.nombre
     
-    @classmethod(   )
+    @classmethod
     def desde_texto(cls,texto):
         return cls(texto)
     
@@ -44,14 +44,3 @@ class Categoria:
 
 def categorias_iniciales():
     return [Categoria(nombre) for nombre in CATEGORIAS_POR_DEFECTO]
-
-c1n= Categoria("Prestamos")
-c2n= Categoria("PreSTAMOS")
-c3n= Categoria("Prestamito")
-
-print(c1n.__eq__(c3n))
-
-print(hash(c1n))
-print(hash(c2n))
-print(hash(c3n))        
-    

@@ -1,5 +1,5 @@
 class NodoLista:
-    def _init_ (self,gasto):
+    def __init__(self,gasto):
         self.gasto = gasto
         self.siguiente = None
         
@@ -12,7 +12,7 @@ class ListaSimple:
         """Inserta al inicio. O(1)."""
         nodo = NodoLista(gasto)
         nodo.siguiente = self._cabeza
-        self.cabeza = nodo
+        self._cabeza = nodo
         self._tamano += 1
 
     def buscar(self, id_gasto):
@@ -22,7 +22,7 @@ class ListaSimple:
             if actual.gasto.id == id_gasto:
                 return actual.gasto
             actual = actual.siguiente
-            return None
+        return None
         
     def eliminar(self, id_gasto):
         """Quita la primera coincidencia y devuelve el gasto quitado,
