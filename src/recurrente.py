@@ -50,6 +50,7 @@ class Recurrente:
             "activo": self.activo,
             }
     
+    @classmethod
     def desde_dict(cls,datos):
         try:
             return cls(
